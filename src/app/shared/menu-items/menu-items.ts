@@ -38,13 +38,10 @@ const MENUITEMS = [
     icon: 'av_timer',
   },
   {
-    state: 'tables',
-    name: 'Tables',
-    type: 'sub',
+    state: 'complaints/all',
+    name: 'Complaints',
+    type: 'link',
     icon: 'web',
-    children: [
-      { state: 'basictable', name: 'Basic Table', type: 'link' },
-    ],
   },
 ];
 

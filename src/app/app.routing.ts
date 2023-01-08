@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
 import { AppBlankComponent } from './layouts/blank/blank.component';
+import { ComplaintsComponent } from './components/complaints/complaints.component';
+import { AuthLoggedInGuard } from './guards/auth/AuthLoggedInGuard';
 
 export const AppRoutes: Routes = [
   {
@@ -26,6 +28,11 @@ export const AppRoutes: Routes = [
       {
         path: 'tables',
         loadChildren: () => import('./tables/tables.module').then((m) => m.TablesModule),
+      },
+      {
+        path: 'complaints',
+        loadChildren: () =>
+          import('./components/components.module').then((m) => m.ComponentsMondule),
       },
     ],
   },

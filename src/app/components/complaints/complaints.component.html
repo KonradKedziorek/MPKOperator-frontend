@@ -1,0 +1,117 @@
+<mat-card>
+  <mat-card-content>
+    <div class="d-flex align-items-center">
+      <div class="ml-auto">
+        <button mat-raised-button color="primary" (click)="createComplaint()">Add complaint</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<form class="basic-form" [formGroup]="filters" autocomplete="off">
+  <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+    <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+      <mat-form-field>
+        <input type="text" formControlName="placeOfEvent" (input)="onSearchChange()" matInput
+          placeholder="Place of event" />
+      </mat-form-field>
+    </div>
+    <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+      <mat-form-field>
+        <input matInput type="text" formControlName="nameOfNotifier" (input)="onSearchChange()"
+          placeholder="Name of notifier" />
+      </mat-form-field>
+    </div>
+    <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+      <mat-form-field>
+        <input matInput type="text" formControlName="surnameOfNotifier" (input)="onSearchChange()"
+          placeholder="Surname of notifier" />
+      </mat-form-field>
+    </div>
+    <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+      <mat-form-field>
+        <input matInput type="text" formControlName="peselOfNotifier" (input)="onSearchChange()"
+          placeholder="Pesel of notifier" />
+      </mat-form-field>
+    </div>
+    <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+      <mat-form-field>
+        <input matInput type="text" formControlName="complaintStatus" (input)="onSearchChange()"
+          placeholder="Complaint status" />
+      </mat-form-field>
+    </div>
+    <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+      <mat-form-field>
+        <input matInput type="text" formControlName="dateOfEvent" (input)="onSearchChange()"
+          placeholder="Date of event" />
+      </mat-form-field>
+    </div>
+  </div>
+  <button mat-raised-button color="warn" (click)="reset()">Clear</button>
+</form>
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Table with pagination</mat-card-title>
+        <div class="responsive-table">
+          <mat-table #table [dataSource]="complaints">
+            <ng-container matColumnDef="dateOfEvent">
+              <mat-header-cell *matHeaderCellDef> Date of event </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.dateOfEvent }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="placeOfEvent">
+              <mat-header-cell *matHeaderCellDef> Place of event </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.placeOfEvent }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="nameOfNotifier">
+              <mat-header-cell *matHeaderCellDef> Name of notifier </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.nameOfNotifier }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="surnameOfNotifier">
+              <mat-header-cell *matHeaderCellDef> Surname of notifier </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.surnameOfNotifier }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="peselOfNotifier">
+              <mat-header-cell *matHeaderCellDef> Pesel of notifier </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.peselOfNotifier }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="complaintStatus">
+              <mat-header-cell *matHeaderCellDef> Complaint status </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.complaintStatus }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <button [matMenuTriggerFor]="flags" mat-icon-button class="m-r-5">
+                  <mat-icon>more_horiz</mat-icon>
+                </button>
+                <mat-menu #flags="matMenu" class="mymegamenu">
+                  <button mat-menu-item (click)="edit(element)">
+                    <mat-icon>edit</mat-icon>
+                    <span>Edit</span>
+                  </button>
+                  <button mat-menu-item (click)="getComplaint(element.uuid)">
+                    <mat-icon>details</mat-icon>
+                    <span>Details</span>
+                  </button>
+                </mat-menu>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+
+          <mat-paginator #paginator (page)="handlePaginator($event)" [pageSize]="size" [pageSizeOptions]="[5, 10, 20]"
+            [length]="totalRecords">
+          </mat-paginator>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

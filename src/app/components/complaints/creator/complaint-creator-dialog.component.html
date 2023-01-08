@@ -1,0 +1,46 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Create complaint</mat-card-title>
+        <form class="basic-form" [formGroup]="creatorComplaint" autocomplete="off">
+          <div fxLayout="row wrap">
+            <div fxFlex.gt-md="100" fxFlex="100">
+              <mat-form-field>
+                <input formControlName="placeOfEvent" matInput placeholder="Place of event" />
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="100" fxFlex="100">
+              <mat-form-field>
+                <input formControlName="nameOfNotifier" matInput placeholder="Name of notifier" />
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="100" fxFlex="100">
+              <mat-form-field>
+                <input formControlName="surnameOfNotifier" matInput placeholder="Surname of notifier" />
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="100" fxFlex="100">
+              <mat-form-field>
+                <input formControlName="peselOfNotifier" matInput placeholder="Pesel of notifier" />
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="100" fxFlex="100">
+              <mat-form-field>
+                <input formControlName="contactToNotifier" matInput placeholder="Contact of notifier" />
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="100" fxFlex="100">
+              <mat-form-field>
+                <textarea matInput formControlName="description" placeholder="Textarea"></textarea>
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="100" fxFlex="100">
+              <button mat-raised-button color="primary" (click)="createComplaint()">Add</button>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

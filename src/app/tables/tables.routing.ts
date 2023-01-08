@@ -11,7 +11,7 @@ export const TablesRoutes: Routes = [
         component: BasicTableComponent,
         data: {
           title: 'Basic Table',
-          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Basic Table' }],
+          // urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Basic Table' }],
         },
       },
     ],

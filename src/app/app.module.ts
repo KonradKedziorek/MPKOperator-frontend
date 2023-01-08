@@ -78,13 +78,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BrowserAnimationsModule,
     TableModule,
     CalendarModule,
-		DialogModule,
-		ButtonModule,
+    DialogModule,
+    ButtonModule,
     InputTextModule,
     HttpClientModule,
     FormsModule,
     TableModule, // Added DataTableModule
-    PaginatorModule
+    PaginatorModule,
   ],
   providers: [
     {
