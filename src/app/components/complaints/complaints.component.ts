@@ -34,7 +34,7 @@ export class ComplaintsComponent implements OnInit {
   ];
 
   filters = new FormGroup({
-    dateOfEvent: new FormControl(null),
+    date: new FormControl(null),
     placeOfEvent: new FormControl(null),
     nameOfNotifier: new FormControl(null),
     surnameOfNotifier: new FormControl(null),
@@ -43,7 +43,7 @@ export class ComplaintsComponent implements OnInit {
   });
 
   params: { [key: string]: string | null } = {};
-  size = 5;
+  size = 10;
   page = 0;
   totalRecords = 0;
   declare complaints: Array<Complaint>;
@@ -51,7 +51,6 @@ export class ComplaintsComponent implements OnInit {
   public getComplaints(params: any, page: number, size: number) {
     this.complaintService.getComplaints(params, page, size).subscribe(
       (value) => {
-        console.log(params);
         this.complaints = value.data;
         this.totalRecords = value.size;
       },
@@ -65,7 +64,7 @@ export class ComplaintsComponent implements OnInit {
     this.filters.reset();
     this.params = {};
     this.page = 0;
-    this.size = 5;
+    this.size = 10;
     this.getComplaints(this.params, this.page, this.size);
   }
 
@@ -77,7 +76,7 @@ export class ComplaintsComponent implements OnInit {
         this.params[key] = null;
       }
     }
-    this.params['dateOfEvent'] = this.formatDate(this.params['dateOfEvent']);
+    this.params['date'] = this.formatDate(this.params['date']);
 
     this.getComplaints(this.params, this.page, this.size);
   }
@@ -92,8 +91,11 @@ export class ComplaintsComponent implements OnInit {
     return this.datePipe.transform(date, 'yyyy-MM-dd');
   }
 
+  public formatDateTime(date: any) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm:ss');
+  }
+
   public edit(user: any) {
-    console.log(user);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '700px';
     dialogConfig.data = user;
@@ -129,4 +131,25 @@ export class ComplaintsComponent implements OnInit {
   public onSearchChange(): void {
     this.filterOnClick();
   }
+
+  public statuses: any[] = [
+    {
+      status: 'RECEIVED',
+    },
+    {
+      status: 'PROCESSED',
+    },
+    {
+      status: 'REJECTED',
+    },
+    {
+      status: 'ACCEPTED',
+    },
+    {
+      status: 'IN_PROGRESS',
+    },
+    {
+      status: 'FINISHED',
+    },
+  ];
 }

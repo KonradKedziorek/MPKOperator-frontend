@@ -9,35 +9,94 @@
               <mat-form-field>
                 <input formControlName="placeOfEvent" matInput placeholder="Place of event" />
               </mat-form-field>
+              <ul class="list-unstyled" *ngFor="let error of getErrorMessages('placeOfEvent')">
+                <li>
+                  <mat-error>{{error}}</mat-error>
+                </li>
+              </ul>
             </div>
             <div fxFlex.gt-sm="100" fxFlex="100">
               <mat-form-field>
                 <input formControlName="nameOfNotifier" matInput placeholder="Name of notifier" />
               </mat-form-field>
+              <ul class="list-unstyled" *ngFor="let error of getErrorMessages('nameOfNotifier')">
+                <li>
+                  <mat-error>{{error}}</mat-error>
+                </li>
+              </ul>
             </div>
             <div fxFlex.gt-sm="100" fxFlex="100">
               <mat-form-field>
                 <input formControlName="surnameOfNotifier" matInput placeholder="Surname of notifier" />
               </mat-form-field>
+              <ul class="list-unstyled" *ngFor="let error of getErrorMessages('surnameOfNotifier')">
+                <li>
+                  <mat-error>{{error}}</mat-error>
+                </li>
+              </ul>
             </div>
             <div fxFlex.gt-sm="100" fxFlex="100">
               <mat-form-field>
                 <input formControlName="peselOfNotifier" matInput placeholder="Pesel of notifier" />
               </mat-form-field>
+              <ul class="list-unstyled" *ngFor="let error of getErrorMessages('peselOfNotifier')">
+                <li>
+                  <mat-error>{{error}}</mat-error>
+                </li>
+              </ul>
             </div>
             <div fxFlex.gt-sm="100" fxFlex="100">
               <mat-form-field>
                 <input formControlName="contactToNotifier" matInput placeholder="Contact of notifier" />
               </mat-form-field>
+              <ul class="list-unstyled" *ngFor="let error of getErrorMessages('contactToNotifier')">
+                <li>
+                  <mat-error>{{error}}</mat-error>
+                </li>
+              </ul>
             </div>
             <div fxFlex.gt-sm="100" fxFlex="100">
               <mat-form-field>
                 <textarea matInput formControlName="description" placeholder="Textarea"></textarea>
               </mat-form-field>
+              <ul class="list-unstyled" *ngFor="let error of getErrorMessages('description')">
+                <li>
+                  <mat-error>{{error}}</mat-error>
+                </li>
+              </ul>
+            </div>
+            <div fxFlex.gt-sm="100" fxFlex="100">
+              <mat-form-field class="example-form-field">
+                <mat-label>Date of event</mat-label>
+                <input matInput [matDatepicker]="datepicker1" formControlName="dateOfEvent">
+                <mat-datepicker-toggle matSuffix [for]="datepicker1"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker1>
+                  <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Odrzuć</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Zastosuj</button>
+                  </mat-datepicker-actions>
+                </mat-datepicker>
+              </mat-form-field>
+              <ul class="list-unstyled" *ngFor="let error of getErrorMessages('dateOfEvent')">
+                <li>
+                  <mat-error>{{error}}</mat-error>
+                </li>
+              </ul>
+            </div>
+            <div fxFlex.gt-sm="100" fxFlex="100">
+              <mat-form-field>
+                <input formControlName="timeOfEvent" matInput placeholder="Time of event" />
+              </mat-form-field>
+              <ul class="list-unstyled" *ngFor="let error of getErrorMessages('timeOfEvent')">
+                <li>
+                  <mat-error>{{error}}</mat-error>
+                </li>
+              </ul>
             </div>
             <div fxFlex.gt-sm="100" fxFlex="100">
               <button mat-raised-button color="primary" (click)="edit()">Edit</button>
             </div>
+            <mat-error *ngIf="errorMessage!=undefined">{{this.errorMessage}}</mat-error>
           </div>
         </form>
       </mat-card-content>

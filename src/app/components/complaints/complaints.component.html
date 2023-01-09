@@ -35,14 +35,25 @@
     </div>
     <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
       <mat-form-field>
-        <input matInput type="text" formControlName="complaintStatus" (input)="onSearchChange()"
-          placeholder="Complaint status" />
+        <mat-label>Complaint status</mat-label>
+        <mat-select formControlName="complaintStatus" (selectionChange)="onSearchChange()">
+          <mat-option *ngFor="let status of statuses" [value]="status.status">
+            {{ status.status }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
-      <mat-form-field>
-        <input matInput type="text" formControlName="dateOfEvent" (input)="onSearchChange()"
-          placeholder="Date of event" />
+      <mat-form-field class="example-form-field">
+        <mat-label>Date of event</mat-label>
+        <input matInput [matDatepicker]="datepicker1" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="datepicker1"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker1>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Odrzuć</button>
+            <button mat-raised-button color="primary" matDatepickerApply (click)="onSearchChange()">Zastosuj</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
       </mat-form-field>
     </div>
   </div>
@@ -57,7 +68,7 @@
           <mat-table #table [dataSource]="complaints">
             <ng-container matColumnDef="dateOfEvent">
               <mat-header-cell *matHeaderCellDef> Date of event </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{ element.dateOfEvent }} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{this.formatDateTime(element.dateOfEvent)}} </mat-cell>
             </ng-container>
             <ng-container matColumnDef="placeOfEvent">
               <mat-header-cell *matHeaderCellDef> Place of event </mat-header-cell>
@@ -81,7 +92,10 @@
 
             <ng-container matColumnDef="complaintStatus">
               <mat-header-cell *matHeaderCellDef> Complaint status </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{ element.complaintStatus }} </mat-cell>
+              <mat-cell *matCellDef="let element">
+                <span class="label"
+                  [ngClass]="['label-complaintStatus-' + element.complaintStatus]">{{ element.complaintStatus }}</span>
+              </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="actions">

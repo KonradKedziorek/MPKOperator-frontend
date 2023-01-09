@@ -1199,3 +1199,32 @@ ul.list-style-none {
     color: white;
   }
 }
+
+
+.label-complaintStatus-RECEIVED{
+background-color: green;
+}
+
+.label-complaintStatus-PROCESSED{
+  background-color: brown;
+
+}
+
+.label-complaintStatus-REJECTED{
+  background-color: blue;
+
+}
+
+.label-complaintStatus-ACCEPTED{
+  background-color: red;
+
+}
+
+.label-complaintStatus-IN_PROGRESS{
+  background-color: grey;
+}
+
+.label-complaintStatus-FINISHED{
+  background-color: pink;
+
+}

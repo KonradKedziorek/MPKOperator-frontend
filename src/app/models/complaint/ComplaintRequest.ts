@@ -1,6 +1,7 @@
 export interface ComplaintRequest {
   uuid: string;
-  dateOfEvent: string;
+  dateOfEvent: string | null;
+  timeOfEvent: string | null;
   placeOfEvent: string;
   nameOfNotifier: string;
   surnameOfNotifier: string;

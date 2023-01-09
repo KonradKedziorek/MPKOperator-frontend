@@ -9,6 +9,7 @@ import {
 } from '@angular/material/dialog';
 import { Complaint } from 'src/app/models/complaint/Complaint';
 import { ComplaintRequest } from 'src/app/models/complaint/ComplaintRequest';
+import { MethodArgumentNotValidFieldMessage } from 'src/app/models/errors/MethodArgumentNotValidFieldMessage';
 
 import { ComplaintService } from 'src/app/services/complaint/complaint.service';
 @Component({
@@ -23,11 +24,11 @@ export class ComplaintDialogComponent implements OnInit {
     private complaintService: ComplaintService,
     @Inject(MAT_DIALOG_DATA) data: Complaint,
   ) {
-    console.log(data);
     if (data !== null) {
       this.complaint = {
         uuid: data.uuid,
-        dateOfEvent: data.dateOfEvent,
+        dateOfEvent: this.formatDate(data.dateOfEvent),
+        timeOfEvent: this.formatTime(data.dateOfEvent),
         placeOfEvent: data.placeOfEvent,
         nameOfNotifier: data.nameOfNotifier,
         surnameOfNotifier: data.surnameOfNotifier,
@@ -42,6 +43,7 @@ export class ComplaintDialogComponent implements OnInit {
     this.editComplaint = new FormGroup({
       uuid: new FormControl(this.complaint.uuid),
       dateOfEvent: new FormControl(this.complaint.dateOfEvent),
+      timeOfEvent: new FormControl(this.complaint.timeOfEvent),
       placeOfEvent: new FormControl(this.complaint.placeOfEvent),
       nameOfNotifier: new FormControl(this.complaint.nameOfNotifier),
       surnameOfNotifier: new FormControl(this.complaint.surnameOfNotifier),
@@ -54,6 +56,9 @@ export class ComplaintDialogComponent implements OnInit {
   declare complaint: ComplaintRequest;
   declare editComplaint: any;
 
+  declare errors: MethodArgumentNotValidFieldMessage[];
+  declare errorMessage: string;
+
   public async edit() {
     let ComplaintRequest: ComplaintRequest = this.editComplaint.value;
     await this.complaintService
@@ -63,8 +68,8 @@ export class ComplaintDialogComponent implements OnInit {
         this.dialog.closeAll();
       })
       .catch((e) => {
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.data = e.error.details;
+        this.errors = e.error.errors;
+        this.errorMessage = e.error.message;
       });
   }
 
@@ -73,6 +78,18 @@ export class ComplaintDialogComponent implements OnInit {
   }
 
   public formatDate(date: any) {
-    return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm:ss');
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
+
+  public formatTime(date: any) {
+    return this.datePipe.transform(date, 'HH:mm:ss');
+  }
+
+  public getErrorMessages(fieldName: string): string[] {
+    let error = this.errors?.find((o) => o.fieldName === fieldName);
+    if (error?.errorMessages != undefined) {
+      return error?.errorMessages;
+    }
+    return [];
   }
 }

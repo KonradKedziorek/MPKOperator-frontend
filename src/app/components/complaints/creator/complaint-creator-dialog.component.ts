@@ -1,7 +1,9 @@
+import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { ComplaintRequest } from 'src/app/models/complaint/ComplaintRequest';
+import { MethodArgumentNotValidFieldMessage } from 'src/app/models/errors/MethodArgumentNotValidFieldMessage';
 import { ComplaintService } from 'src/app/services/complaint/complaint.service';
 
 @Component({
@@ -10,11 +12,16 @@ import { ComplaintService } from 'src/app/services/complaint/complaint.service';
   styleUrls: ['./complaint-creator-dialog.component.css'],
 })
 export class ComplaintCreatorDialog implements OnInit {
-  constructor(private complaintService: ComplaintService, private dialog: MatDialog) {}
+  constructor(
+    private complaintService: ComplaintService,
+    private dialog: MatDialog,
+    private datePipe: DatePipe,
+  ) {}
 
   ngOnInit(): void {
     this.creatorComplaint = new FormGroup({
       dateOfEvent: new FormControl(null),
+      timeOfEvent: new FormControl(null),
       placeOfEvent: new FormControl(null),
       description: new FormControl(null),
       nameOfNotifier: new FormControl(null),
@@ -25,6 +32,8 @@ export class ComplaintCreatorDialog implements OnInit {
   }
 
   declare creatorComplaint: any;
+  declare errors: MethodArgumentNotValidFieldMessage[];
+  declare errorMessage: string;
 
   public closeForm() {
     this.dialog.closeAll();
@@ -32,7 +41,8 @@ export class ComplaintCreatorDialog implements OnInit {
 
   public async createComplaint() {
     let creatingUserRequest: ComplaintRequest = {
-      dateOfEvent: this.creatorComplaint.value.dateOfEvent,
+      dateOfEvent: this.formatDate(this.creatorComplaint.value.dateOfEvent),
+      timeOfEvent: this.creatorComplaint.value.timeOfEvent,
       placeOfEvent: this.creatorComplaint.value.placeOfEvent,
       description: this.creatorComplaint.value.description,
       nameOfNotifier: this.creatorComplaint.value.nameOfNotifier,
@@ -49,8 +59,20 @@ export class ComplaintCreatorDialog implements OnInit {
         this.dialog.closeAll();
       })
       .catch((e) => {
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.data = e.error.details;
+        this.errors = e.error.errors;
+        this.errorMessage = e.error.message;
       });
+  }
+
+  public formatDate(date: any) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
+
+  public getErrorMessages(fieldName: string): string[] {
+    let error = this.errors?.find((o) => o.fieldName === fieldName);
+    if (error?.errorMessages != undefined) {
+      return error?.errorMessages;
+    }
+    return [];
   }
 }

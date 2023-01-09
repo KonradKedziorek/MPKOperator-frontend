@@ -10,6 +10,7 @@ import { ComplaintDialogComponent } from './complaints/editor/complaint-dialog.c
 import { ComplaintsComponent } from './complaints/complaints.component';
 import { ComponentRoutes } from './components.routing';
 import { ComplaintDetailsDialog } from './complaints/details/complaint-details-dialog.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { ComplaintDetailsDialog } from './complaints/details/complaint-details-d
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaterialTimepickerModule,
   ],
   declarations: [
     ComplaintCreatorDialog,

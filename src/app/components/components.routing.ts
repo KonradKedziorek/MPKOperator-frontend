@@ -7,7 +7,7 @@ export const ComponentRoutes: Routes = [
     path: '',
     children: [
       {
-        path: 'all',
+        path: '',
         component: ComplaintsComponent,
         data: {
           title: 'Complaints',

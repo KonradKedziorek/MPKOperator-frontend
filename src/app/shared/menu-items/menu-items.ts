@@ -38,7 +38,7 @@ const MENUITEMS = [
     icon: 'av_timer',
   },
   {
-    state: 'complaints/all',
+    state: 'complaints',
     name: 'Complaints',
     type: 'link',
     icon: 'web',
