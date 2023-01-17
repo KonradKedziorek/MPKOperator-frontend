@@ -1,0 +1,116 @@
+<mat-card>
+    <mat-card-content>
+      <div class="d-flex align-items-center">
+        <!-- <div class="ml-auto">
+          <button mat-raised-button color="primary" (click)="createFault()">Add fault</button>
+        </div> -->
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <form class="basic-form" [formGroup]="filters" autocomplete="off">
+    <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field>
+          <input type="text" formControlName="placeOfEvent" (input)="onSearchChange()" matInput
+            placeholder="Place of event" />
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field>
+          <input matInput type="text" formControlName="createdBy" (input)="onSearchChange()"
+            placeholder="Created by" />
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field>
+          <input matInput type="text" formControlName="busNumber" (input)="onSearchChange()"
+            placeholder="Bus number" />
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field>
+          <mat-label>Fault status</mat-label>
+          <mat-select formControlName="faultStatus" (selectionChange)="onSearchChange()">
+            <mat-option *ngFor="let status of statuses" [value]="status.status">
+              {{ status.status }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field class="example-form-field">
+          <mat-label>Date of event</mat-label>
+          <input matInput [matDatepicker]="datepicker1" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="datepicker1"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker1>
+            <mat-datepicker-actions>
+              <button mat-button matDatepickerCancel>Odrzuć</button>
+              <button mat-raised-button color="primary" matDatepickerApply (click)="onSearchChange()">Zastosuj</button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-raised-button color="warn" (click)="reset()">Clear</button>
+  </form>
+  <div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>Faults</mat-card-title>
+          <div class="responsive-table">
+            <mat-table #table [dataSource]="faults">
+              <ng-container matColumnDef="dateOfEvent">
+                <mat-header-cell *matHeaderCellDef> Date of event </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{this.formatDateTime(element.dateOfEvent)}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="placeOfEvent">
+                <mat-header-cell *matHeaderCellDef> Place of event </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.placeOfEvent }} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="busNumber">
+                <mat-header-cell *matHeaderCellDef> Bus number </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.busNumber }} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="complaintStatus">
+                <mat-header-cell *matHeaderCellDef> Fault status </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <span class="label"
+                    [ngClass]="['label-faultStatus-' + element.faultStatus]">{{ element.faultStatus }}</span>
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <button [matMenuTriggerFor]="flags" mat-icon-button class="m-r-5">
+                    <mat-icon>more_horiz</mat-icon>
+                  </button>
+                  <mat-menu #flags="matMenu" class="mymegamenu">
+                    <button mat-menu-item (click)="edit(element)">
+                      <mat-icon>edit</mat-icon>
+                      <span>Edit</span>
+                    </button>
+                    <button mat-menu-item (click)="getComplaint(element.uuid)">
+                      <mat-icon>details</mat-icon>
+                      <span>Details</span>
+                    </button>
+                  </mat-menu>
+                </mat-cell>
+              </ng-container>
+  
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            </mat-table>
+  
+            <mat-paginator #paginator (page)="handlePaginator($event)" [pageSize]="size" [pageSizeOptions]="[5, 10, 20]"
+              [length]="totalRecords">
+            </mat-paginator>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

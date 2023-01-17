@@ -26,11 +26,12 @@ export const AppRoutes: Routes = [
           import('./dashboards/dashboards.module').then((m) => m.DashboardsModule),
       },
       {
-        path: 'tables',
-        loadChildren: () => import('./tables/tables.module').then((m) => m.TablesModule),
+        path: 'complaints',
+        loadChildren: () =>
+          import('./components/components.module').then((m) => m.ComponentsMondule),
       },
       {
-        path: 'complaints',
+        path: 'faults',
         loadChildren: () =>
           import('./components/components.module').then((m) => m.ComponentsMondule),
       },
