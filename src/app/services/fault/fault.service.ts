@@ -46,7 +46,7 @@ export class FaultService {
         );
       }
     
-      public getComplaintHistoryList(uuid: String): Observable<FaultHistoryResponse[]> {
+      public getFaultHistoryList(uuid: String): Observable<FaultHistoryResponse[]> {
         return this.http.get<FaultHistoryResponse[]>(
           'http://localhost:8080/api/faultHistories/uuid=' + uuid,
         );

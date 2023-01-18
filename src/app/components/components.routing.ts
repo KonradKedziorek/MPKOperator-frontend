@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Dashboard1Component } from '../dashboards/dashboard1/dashboard1.component';
 
 import { ComplaintsComponent } from './complaints/complaints.component';
+import { FaultsComponent } from './faults/faults.component';
 
 export const ComponentRoutes: Routes = [
   {
@@ -12,7 +13,7 @@ export const ComponentRoutes: Routes = [
         component: ComplaintsComponent,
         data: {
           title: 'Complaints',
-          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Complaints' }],
+          urls: [{ title: 'Complaints', url: '/complaints' }, { title: 'Complaints' }],
         },
       },
       {
@@ -21,6 +22,14 @@ export const ComponentRoutes: Routes = [
         data: {
           title: 'Dashboard',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Dashboard' }],
+        },
+      },
+      {
+        path: '',
+        component: FaultsComponent,
+        data: {
+          title: 'Faults',
+          urls: [{ title: 'Faults', url: '/faults' }, { title: 'Faults' }],
         },
       },
     ],

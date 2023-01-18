@@ -1,0 +1,78 @@
+<mat-dialog-content>
+    <div fxLayout="row wrap">
+      <div fxFlex.gt-sm="100" fxFlex="100">
+        <mat-card>
+          <mat-card-content>
+            <mat-card-title>Create fault</mat-card-title>
+            <form class="basic-form" [formGroup]="creatorFault" autocomplete="off">
+              <div fxLayout="row wrap">
+                <div fxFlex.gt-md="100" fxFlex="100">
+                  <mat-form-field>
+                    <input formControlName="placeOfEvent" matInput placeholder="Place of event" />
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('placeOfEvent')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <mat-form-field>
+                    <input formControlName="busNumber" matInput placeholder="Bus number" />
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('busNumber')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <mat-form-field>
+                    <textarea matInput formControlName="description" placeholder="Textarea"></textarea>
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('description')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Date of event</mat-label>
+                    <input matInput [matDatepicker]="datepicker1" formControlName="dateOfEvent">
+                    <mat-datepicker-toggle matSuffix [for]="datepicker1"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker1>
+                      <mat-datepicker-actions>
+                        <button mat-button matDatepickerCancel>Odrzuć</button>
+                        <button mat-raised-button color="primary" matDatepickerApply>Zastosuj</button>
+                      </mat-datepicker-actions>
+                    </mat-datepicker>
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('dateOfEvent')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <mat-form-field>
+                    <input formControlName="timeOfEvent" matInput placeholder="Time of event" />
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('timeOfEvent')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <button mat-raised-button color="primary" (click)="createFault()">Add</button>
+                </div>
+                <mat-error *ngIf="errorMessage!=undefined">{{this.errorMessage}}</mat-error>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-dialog-content>
+  

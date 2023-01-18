@@ -1,0 +1,111 @@
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-dialog-actions>
+  
+  <div fxLayout="row wrap" *ngIf="fault!=undefined">
+    <div fxFlex.gt-lg="75" fxFlex.gt-md="60" fxFlex.gt-xs="100" fxFlex="100">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>Description</mat-card-title> {{fault.description}}
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>Comments</mat-card-title>
+          <ul class="list-unstyled m-t-40" *ngFor="let comment of comments">
+            <li class="media">
+              <div class="media-body">
+                <h5 class="m-t-0 m-b-10 font-medium">{{comment.createdBy}} {{this.formatDate(comment.createdAt)}}</h5>
+                {{comment.content}}
+              </div>
+            </li>
+            <hr />
+          </ul>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-content>
+          <h4 class="m-b-20">Write a reply</h4>
+          <form method="post">
+            <form class="basic-form" [formGroup]="commentForm" autocomplete="off">
+              <div fxLayout="row wrap">
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <mat-form-field>
+                    <textarea matInput formControlName="content" placeholder="Reply"></textarea>
+                  </mat-form-field>
+                </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <button mat-raised-button class="m-t-20 m-r-5" color="primary" (click)="reply()">Reply</button>
+                </div>
+              </div>
+            </form>
+          </form>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-content>
+          <ul class="timeline" *ngFor="let faultHistory of faultHistories;let i=index">
+            <li [ngClass]="{'timeline-inverted': i%2!=0,'warn': i%2==0}">
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <span class="label" [ngClass]="['label-faultStatus-' + faultHistory.status]">
+                    {{faultHistory.status}}</span>
+                  <p>
+                    <small class="text-muted">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      {{faultHistory.modifiedBy}}
+                    </small>
+                  </p>
+                  <p>
+                    <small class="text-muted">
+                      <i class="fa fa-clock-o"></i>
+                      {{this.formatDate(faultHistory.modifiedAt)}}
+                    </small>
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+  
+    </div>
+    <div fxFlex.gt-lg="25" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+      <mat-card>
+        <mat-card-content>
+          <h5 class="p-t-20 m-b-5">Fault status</h5>
+          <span class="label"
+            [ngClass]="['label-faultStatus-' + fault.faultStatus]">{{fault.faultStatus}}</span>
+          <h5 class="p-t-20 m-b-5">Created at</h5>
+          <span>{{this.formatDate(fault.createdAt)}}</span>
+          <h5 class="p-t-20 m-b-5">Created by</h5>
+          <span>{{fault.createdBy}}</span>
+          <h5 class="p-t-20 m-b-5">Last modified at</h5>
+          <span>{{this.formatDate(fault.modifiedAt)}}</span>
+          <h5 class="p-t-20 m-b-5">Last modified by</h5>
+          <span>{{fault.modifiedBy}}</span>
+          <br />
+          <button mat-raised-button class="m-t-20 m-r-5" [matMenuTriggerFor]="flags">UPDATE
+            STATUS</button>
+          <mat-menu #flags="matMenu" class="mymegamenu">
+            <button mat-menu-item *ngFor="let status of statuses" (click)="changeStatus(fault.uuid, status.status)">
+              <span *ngIf="status.status!=fault.faultStatus">{{ status.status }}</span>
+            </button>
+          </mat-menu>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-content>
+          <h5 class="p-t-20 m-b-5">Date of event</h5>
+          <span>{{this.formatDate(fault.dateOfEvent)}}</span>
+          <h5 class="p-t-20 m-b-5">Place of event</h5>
+          <span>{{fault.placeOfEvent}}</span>
+          <h5 class="p-t-20 m-b-5">Bus number</h5>
+          <span>{{fault.busNumber}}</span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

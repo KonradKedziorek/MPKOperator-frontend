@@ -1200,7 +1200,7 @@ ul.list-style-none {
   }
 }
 
-
+//Complaint statuses
 .label-complaintStatus-RECEIVED{
 background-color: green;
 }
@@ -1228,3 +1228,32 @@ background-color: green;
   background-color: pink;
 
 }
+
+//Fault statuses
+.label-faultStatus-REPORTED{
+  background-color: green;
+  }
+  
+  .label-faultStatus-CHECKING{
+    background-color: brown;
+  
+  }
+  
+  .label-faultStatus-WAITING_FOR_CAR_PARTS{
+    background-color: blue;
+  
+  }
+  
+  .label-faultStatus-FIXING_IN_PROGRESS{
+    background-color: red;
+  
+  }
+  
+  .label-faultStatus-SUSPENDED{
+    background-color: grey;
+  }
+  
+  .label-faultStatus-FINISHED{
+    background-color: pink;
+  
+  }

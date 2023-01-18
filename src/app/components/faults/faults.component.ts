@@ -1,9 +1,12 @@
 import { DatePipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { Fault } from "src/app/models/fault/Fault";
 import { FaultService } from "src/app/services/fault/fault.service";
+import { FaultCreatorDialog } from "./creator/fault-creator-dialog.component";
+import { FaultDetailsDialog } from "./details/fault-details-dialog.component";
+import { FaultDialogComponent } from "./editor/fault-dialog.component";
 
 @Component({
     selector: 'faults',
@@ -88,7 +91,38 @@ export class FaultsComponent implements OnInit {
         return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm:ss');
     }
 
-    // TODO: edit, createFault, getFault
+    public edit(user: any) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.width = '700px';
+        dialogConfig.data = user;
+        let dialogRef = this.dialog.open(FaultDialogComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(() => {
+          this.getFaults(this.params, this.page, this.size);
+        });
+    }
+
+    public createFault() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.width = '700px';
+        let dialogRef = this.dialog.open(FaultCreatorDialog, dialogConfig);
+        dialogRef.afterClosed().subscribe(() => {
+            this.getFaults(this.params, this.page, this.size);
+        });
+    }
+
+    public getFault(uuid: String) {
+        let dialogRef = this.dialog.open(FaultDetailsDialog, {
+          maxWidth: '100vw',
+          maxHeight: '100vh',
+          height: '100%',
+          width: '100%',
+          panelClass: 'full-screen-modal',
+          data: uuid,
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.getFaults(this.params, this.page, this.size);
+        });
+    }
 
     public onSearchChange(): void {
         this.filterOnClick();
@@ -113,5 +147,5 @@ export class FaultsComponent implements OnInit {
         {
           status: 'FINISHED',
         },
-      ];
+    ];
 }

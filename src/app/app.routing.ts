@@ -28,12 +28,12 @@ export const AppRoutes: Routes = [
       {
         path: 'complaints',
         loadChildren: () =>
-          import('./components/components.module').then((m) => m.ComponentsMondule),
+          import('./components/components.module').then((m) => m.ComponentsModule),
       },
       {
         path: 'faults',
         loadChildren: () =>
-          import('./components/components.module').then((m) => m.ComponentsMondule),
+          import('./components/components.module').then((m) => m.ComponentsModule),
       },
     ],
   },

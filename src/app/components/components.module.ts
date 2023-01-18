@@ -12,6 +12,9 @@ import { ComponentRoutes } from './components.routing';
 import { ComplaintDetailsDialog } from './complaints/details/complaint-details-dialog.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { FaultsComponent } from './faults/faults.component';
+import { FaultCreatorDialog } from './faults/creator/fault-creator-dialog.component';
+import { FaultDialogComponent } from './faults/editor/fault-dialog.component';
+import { FaultDetailsDialog } from './faults/details/fault-details-dialog.component';
 
 @NgModule({
   imports: [
@@ -28,7 +31,10 @@ import { FaultsComponent } from './faults/faults.component';
     ComplaintDialogComponent,
     ComplaintsComponent,
     ComplaintDetailsDialog,
+    FaultCreatorDialog,
+    FaultDetailsDialog,
+    FaultDialogComponent,
     FaultsComponent,
   ],
 })
-export class ComponentsMondule {}
+export class ComponentsModule {}

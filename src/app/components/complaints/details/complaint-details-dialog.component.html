@@ -88,7 +88,7 @@
         <span>{{complaint.modifiedBy}}</span>
         <br />
         <button mat-raised-button class="m-t-20 m-r-5" [matMenuTriggerFor]="flags">UPDATE
-          STATUSU</button>
+          STATUS</button>
         <mat-menu #flags="matMenu" class="mymegamenu">
           <button mat-menu-item *ngFor="let status of statuses" (click)="changeStatus(complaint.uuid, status.status)">
             <span *ngIf="status.status!=complaint.complaintStatus">{{ status.status }}</span>

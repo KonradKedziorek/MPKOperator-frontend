@@ -1,9 +1,9 @@
 <mat-card>
     <mat-card-content>
       <div class="d-flex align-items-center">
-        <!-- <div class="ml-auto">
+        <div class="ml-auto">
           <button mat-raised-button color="primary" (click)="createFault()">Add fault</button>
-        </div> -->
+        </div>
       </div>
     </mat-card-content>
   </mat-card>
@@ -93,7 +93,7 @@
                       <mat-icon>edit</mat-icon>
                       <span>Edit</span>
                     </button>
-                    <button mat-menu-item (click)="getComplaint(element.uuid)">
+                    <button mat-menu-item (click)="getFault(element.uuid)">
                       <mat-icon>details</mat-icon>
                       <span>Details</span>
                     </button>
