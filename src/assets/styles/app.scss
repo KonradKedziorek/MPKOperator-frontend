@@ -1232,28 +1232,28 @@ background-color: green;
 //Fault statuses
 .label-faultStatus-REPORTED{
   background-color: green;
-  }
+}
   
-  .label-faultStatus-CHECKING{
-    background-color: brown;
+.label-faultStatus-CHECKING{
+  background-color: brown;
   
-  }
+}
   
-  .label-faultStatus-WAITING_FOR_CAR_PARTS{
-    background-color: blue;
+.label-faultStatus-WAITING_FOR_CAR_PARTS{
+  background-color: blue;  
+
+}
   
-  }
+.label-faultStatus-FIXING_IN_PROGRESS{
+  background-color: red;
   
-  .label-faultStatus-FIXING_IN_PROGRESS{
-    background-color: red;
+}
   
-  }
+.label-faultStatus-SUSPENDED{
+  background-color: grey;
+}
   
-  .label-faultStatus-SUSPENDED{
-    background-color: grey;
-  }
+.label-faultStatus-FINISHED{
+  background-color: pink;
   
-  .label-faultStatus-FINISHED{
-    background-color: pink;
-  
-  }
+}

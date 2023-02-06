@@ -31,10 +31,6 @@ import { FaultDetailsDialog } from './faults/details/fault-details-dialog.compon
     ComplaintDialogComponent,
     ComplaintsComponent,
     ComplaintDetailsDialog,
-    FaultCreatorDialog,
-    FaultDetailsDialog,
-    FaultDialogComponent,
-    FaultsComponent,
   ],
 })
 export class ComponentsModule {}

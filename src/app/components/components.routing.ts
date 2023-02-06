@@ -18,18 +18,18 @@ export const ComponentRoutes: Routes = [
       },
       {
         path: '',
-        component: Dashboard1Component,
-        data: {
-          title: 'Dashboard',
-          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Dashboard' }],
-        },
-      },
-      {
-        path: '',
         component: FaultsComponent,
         data: {
           title: 'Faults',
           urls: [{ title: 'Faults', url: '/faults' }, { title: 'Faults' }],
+        },
+      },
+      {
+        path: '',
+        component: Dashboard1Component,
+        data: {
+          title: 'Dashboard',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Dashboard' }],
         },
       },
     ],
