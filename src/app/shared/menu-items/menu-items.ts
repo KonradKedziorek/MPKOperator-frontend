@@ -49,6 +49,12 @@ const MENUITEMS = [
     type: 'link',
     icon: 'report_problem',
   },
+  {
+    state: 'buses',
+    name: 'Buses',
+    type: 'link',
+    icon: 'directions_bus',
+  },
 ];
 
 @Injectable()

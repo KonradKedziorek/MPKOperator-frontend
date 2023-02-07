@@ -26,8 +26,8 @@ export class FaultsComponent implements OnInit {
     displayedColumns = [
         'dateOfEvent',
         'placeOfEvent',
-        'faultStatus',
         'busNumber',
+        'faultStatus',
         'actions',
     ];
     

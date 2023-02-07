@@ -1,0 +1,194 @@
+<mat-dialog-content>
+    <div fxLayout="row wrap">
+      <div fxFlex.gt-sm="100" fxFlex="100">
+        <mat-card>
+          <mat-card-content>
+            <mat-card-title>Create bus</mat-card-title>
+            <form class="basic-form" [formGroup]="creatorBus" autocomplete="off">
+              <div fxLayout="row wrap">
+                <div fxFlex.gt-md="100" fxFlex="100">
+                  <mat-form-field>
+                    <input formControlName="busNumber" matInput placeholder="Bus number" />
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('busNumber')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-md="100" fxFlex="100">
+                  <mat-form-field>
+                    <input formControlName="mileage" matInput placeholder="Mileage" />
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('mileage')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-md="100" fxFlex="100">
+                  <mat-form-field>
+                    <input formControlName="manufactureYear" matInput placeholder="Manufacture year" />
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('manufactureYear')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <mat-form-field>
+                    <input formControlName="registrationNumber" matInput placeholder="Registration number" />
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('registrationNumber')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field class="example-form-field">
+                      <mat-label>First registration date</mat-label>
+                      <input matInput [matDatepicker]="datepicker1" formControlName="firstRegistrationDate">
+                      <mat-datepicker-toggle matSuffix [for]="datepicker1"></mat-datepicker-toggle>
+                      <mat-datepicker #datepicker1>
+                        <mat-datepicker-actions>
+                          <button mat-button matDatepickerCancel>Odrzuć</button>
+                          <button mat-raised-button color="primary" matDatepickerApply>Zastosuj</button>
+                        </mat-datepicker-actions>
+                      </mat-datepicker>
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('firstRegistrationDate')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <input formControlName="brand" matInput placeholder="Brand" />
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('brand')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <input formControlName="model" matInput placeholder="Model" />
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('model')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <input formControlName="VIN" matInput placeholder="VIN" />
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('VIN')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <input formControlName="maximumTotalMass" matInput placeholder="Maximum total mass" />
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('maximumTotalMass')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <input formControlName="deadWeightLoad" matInput placeholder="Deadweight Load" />
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('deadWeightLoad')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <input formControlName="engineSize" matInput placeholder="Engine size" />
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('engineSize')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <input formControlName="numberOfSeating" matInput placeholder="Number of seating" />
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('numberOfSeating')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <input formControlName="numberOfStandingRoom" matInput placeholder="Number of standing room" />
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('numberOfStandingRoom')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <mat-form-field class="example-form-field">
+                    <mat-label>Insurance expiry date</mat-label>
+                    <input matInput [matDatepicker]="datepicker2" formControlName="insuranceExpiryDate">
+                    <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker2>
+                      <mat-datepicker-actions>
+                        <button mat-button matDatepickerCancel>Odrzuć</button>
+                        <button mat-raised-button color="primary" matDatepickerApply>Zastosuj</button>
+                      </mat-datepicker-actions>
+                    </mat-datepicker>
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('insuranceExpiryDate')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field class="example-form-field">
+                      <mat-label>Service expiry date</mat-label>
+                      <input matInput [matDatepicker]="datepicker3" formControlName="serviceExpiryDate">
+                      <mat-datepicker-toggle matSuffix [for]="datepicker3"></mat-datepicker-toggle>
+                      <mat-datepicker #datepicker3>
+                        <mat-datepicker-actions>
+                          <button mat-button matDatepickerCancel>Odrzuć</button>
+                          <button mat-raised-button color="primary" matDatepickerApply>Zastosuj</button>
+                        </mat-datepicker-actions>
+                      </mat-datepicker>
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('serviceExpiryDate')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <button mat-raised-button color="primary" (click)="createBus()">Add</button>
+                </div>
+                <mat-error *ngIf="errorMessage!=undefined">{{this.errorMessage}}</mat-error>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-dialog-content>
+  

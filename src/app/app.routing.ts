@@ -34,6 +34,11 @@ export const AppRoutes: Routes = [
         loadChildren: () =>
           import('./components/faults/faults.module').then((m) => m.FaultsModule),
       },
+      {
+        path: 'buses',
+        loadChildren: () =>
+          import('./components/buses/buses.module').then((m) => m.BusesModule),
+      },
     ],
   },
   {

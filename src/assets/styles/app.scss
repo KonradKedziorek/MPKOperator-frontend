@@ -1257,3 +1257,27 @@ background-color: green;
   background-color: pink;
   
 }
+
+//Bus statuses
+.label-busStatus-READY_TO_DRIVE{
+  background-color: green;
+}
+  
+.label-busStatus-IN_USE{
+  background-color: brown;
+  
+}
+  
+.label-busStatus-NOT_READY_TO_DRIVE{
+  background-color: blue;  
+
+}
+  
+.label-busStatus-UNDER_REPAIR{
+  background-color: red;
+  
+}
+  
+.label-busStatus-REPORTED_TO_REPAIR{
+  background-color: grey;
+}

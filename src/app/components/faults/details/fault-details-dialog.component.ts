@@ -70,6 +70,8 @@ export class FaultDetailsDialog implements OnInit {
     return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm:ss');
   }
 
+  //TODO Maybe method to convert Integer
+
   public async reply() {
     let commentRequest: CommentRequest = {
       content: this.commentForm.value.content,
