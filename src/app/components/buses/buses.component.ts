@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { Bus } from "src/app/models/bus/Bus";
 import { BusService } from "src/app/services/bus/bus.service";
 import { BusCreatorDialog } from "./creator/bus-creator-dialog.component";
+import { BusDetailsDialog } from "./details/bus-details-dialog.component";
 import { BusDialogComponent } from "./editor/bus-dialog.component";
 
 @Component({
@@ -117,19 +118,19 @@ export class BusesComponent implements OnInit {
         });
     }
 
-    // public getFault(uuid: String) {
-    //     let dialogRef = this.dialog.open(BusDetailsDialog, {
-    //       maxWidth: '100vw',
-    //       maxHeight: '100vh',
-    //       height: '100%',
-    //       width: '100%',
-    //       panelClass: 'full-screen-modal',
-    //       data: uuid,
-    //     });
-    //     dialogRef.afterClosed().subscribe(() => {
-    //       this.getBuses(this.params, this.page, this.size);
-    //     });
-    // }
+    public getBus(uuid: String) {
+        let dialogRef = this.dialog.open(BusDetailsDialog, {
+          maxWidth: '100vw',
+          maxHeight: '100vh',
+          height: '100%',
+          width: '100%',
+          panelClass: 'full-screen-modal',
+          data: uuid,
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.getBuses(this.params, this.page, this.size);
+        });
+    }
 
     public onSearchChange(): void {
         this.filterOnClick();

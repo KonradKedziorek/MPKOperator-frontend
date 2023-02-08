@@ -1,0 +1,94 @@
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-dialog-actions>
+
+  <mat-dialog-actions align="center">
+    <h2 class="m-t-0 m-b-10 font-medium">BUS DETAILS</h2>
+  </mat-dialog-actions>
+  
+  <div fxLayout="row wrap" *ngIf="bus!=undefined">
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+              <h5 class="p-t-20 m-b-5">Bus number</h5>
+              <span>{{bus.busNumber}}</span>
+              <h5 class="p-t-20 m-b-5">Mileage</h5>
+              <span>{{bus.mileage}}</span>
+              <h5 class="p-t-20 m-b-5">Manufacture year</h5>
+              <span>{{bus.manufactureYear}}</span>
+              <h5 class="p-t-20 m-b-5">Registration number</h5>
+              <span>{{bus.registrationNumber}}</span>
+              <h5 class="p-t-20 m-b-5">Brand</h5>
+              <span>{{bus.brand}}</span>
+              <h5 class="p-t-20 m-b-5">Model</h5>
+              <span>{{bus.model}}</span>
+              <h5 class="p-t-20 m-b-5">VIN</h5>
+              <span>{{bus.VIN}}</span>
+              <h5 class="p-t-20 m-b-5">Maximum total Mass</h5>
+              <span>{{bus.maximumTotalMass}}</span>
+              <h5 class="p-t-20 m-b-5">Deadweight Load</h5>
+              <span>{{bus.deadWeightLoad}}</span>
+              <h5 class="p-t-20 m-b-5">Engine size</h5>
+              <span>{{bus.engineSize}}</span>
+              <h5 class="p-t-20 m-b-5">Number of seating</h5>
+              <span>{{bus.numberOfSeating}}</span>
+              <h5 class="p-t-20 m-b-5">Number of standing room</h5>
+              <span>{{bus.numberOfStandingRoom}}</span>
+              <br />
+            </mat-card-content>
+          </mat-card>
+    </div>
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+      <mat-card>
+        <mat-card-content>
+          <h5 class="p-t-20 m-b-5">Bus status</h5>
+          <span class="label"
+            [ngClass]="['label-busStatus-' + bus.busStatus]">{{bus.busStatus}}</span>
+          <h5 class="p-t-20 m-b-5">Created at</h5>
+          <span>{{this.formatDate(bus.createdAt)}}</span>
+          <h5 class="p-t-20 m-b-5">Created by</h5>
+          <span>{{bus.createdBy}}</span>
+          <h5 class="p-t-20 m-b-5">Last modified at</h5>
+          <span>{{this.formatDate(bus.modifiedAt)}}</span>
+          <h5 class="p-t-20 m-b-5">Last modified by</h5>
+          <span>{{bus.modifiedBy}}</span>
+          <br />
+          <button mat-raised-button class="m-t-20 m-r-5" [matMenuTriggerFor]="flags">UPDATE
+            STATUS</button>
+          <mat-menu #flags="matMenu" class="mymegamenu">
+            <button mat-menu-item *ngFor="let status of statuses" (click)="changeStatus(bus.uuid, status.status)">
+              <span *ngIf="status.status!=bus.busStatus">{{ status.status }}</span>
+            </button>
+          </mat-menu>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-content>
+            <h5 class="p-t-20 m-b-5">First registration date</h5>
+            <span>{{this.formatDate(bus.firstRegistrationDate)}}</span>
+            <h5 class="p-t-20 m-b-5">Insurance expiry date</h5>
+            <span>{{this.formatDate(bus.insuranceExpiryDate)}}</span>
+            <h5 class="p-t-20 m-b-5">Service expiry date</h5>
+            <span>{{this.formatDate(bus.serviceExpiryDate)}}</span>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>Users</mat-card-title>
+          <ul class="list-unstyled m-t-10" *ngFor="let user of users">
+            <li class="media">
+              <div class="media-body">
+                <h5>Name: {{user.name}}</h5>
+                <h5>Surname: {{user.surname}}</h5>
+                <h5>PhoneNumber: {{user.phoneNumber}}</h5>
+                <span></span>
+              </div>
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

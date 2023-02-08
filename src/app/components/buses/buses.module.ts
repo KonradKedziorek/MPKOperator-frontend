@@ -8,6 +8,7 @@ import { DemoMaterialModule } from "src/app/demo-material-module";
 import { BusesComponent } from "./buses.component";
 import { BusesRoutes } from "./buses.routing";
 import { BusCreatorDialog } from "./creator/bus-creator-dialog.component";
+import { BusDetailsDialog } from "./details/bus-details-dialog.component";
 import { BusDialogComponent } from "./editor/bus-dialog.component";
 
 @NgModule({
@@ -24,6 +25,7 @@ import { BusDialogComponent } from "./editor/bus-dialog.component";
         BusCreatorDialog,
         BusDialogComponent,
         BusesComponent,
+        BusDetailsDialog
     ],
   })
   export class BusesModule {}
