@@ -1,0 +1,121 @@
+<mat-card>
+    <mat-card-content>
+      <div class="d-flex align-items-center">
+        <div class="ml-auto">
+          <button mat-raised-button color="primary" (click)="createUser()">Add user</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <form class="basic-form" [formGroup]="filters" autocomplete="off">
+    <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field>
+          <input type="text" formControlName="name" (input)="onSearchChange()" matInput
+            placeholder="Name" />
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field>
+          <input matInput type="text" formControlName="surname" (input)="onSearchChange()"
+            placeholder="Surname" />
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field>
+          <input matInput type="text" formControlName="username" (input)="onSearchChange()"
+            placeholder="Username" />
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field>
+          <input matInput type="text" formControlName="email" (input)="onSearchChange()"
+            placeholder="Email" />
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field>
+          <input matInput type="text" formControlName="pesel" (input)="onSearchChange()"
+            placeholder="Pesel" />
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+        <mat-form-field>
+          <input matInput type="text" formControlName="phoneNumber" (input)="onSearchChange()"
+            placeholder="Phone number" />
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-raised-button color="warn" (click)="reset()">Clear</button>
+  </form>
+  <div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>Users</mat-card-title>
+          <div class="responsive-table">
+            <mat-table #table [dataSource]="users">
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="surname">
+                <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.surname }} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="username">
+                <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.username }} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.email }} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="phoneNumber">
+                <mat-header-cell *matHeaderCellDef> PhoneNumber </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element.phoneNumber }} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="isActive">
+                <mat-header-cell *matHeaderCellDef> Is active </mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                  <span class="label"
+                  [ngClass]="['label-isActive-' + element.isActive]">{{ element.isActive }} </span>
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <button [matMenuTriggerFor]="flags" mat-icon-button class="m-r-5">
+                    <mat-icon>more_horiz</mat-icon>
+                  </button>
+                  <mat-menu #flags="matMenu" class="mymegamenu">
+                    <button mat-menu-item (click)="edit(element)">
+                      <mat-icon>edit</mat-icon>
+                      <span>Edit</span>
+                    </button>
+                    <button mat-menu-item (click)="getUser(element.uuid)">
+                      <mat-icon>details</mat-icon>
+                      <span>Details</span>
+                    </button>
+                  </mat-menu>
+                </mat-cell>
+              </ng-container>
+  
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            </mat-table>
+  
+            <mat-paginator #paginator (page)="handlePaginator($event)" [pageSize]="size" [pageSizeOptions]="[5, 10, 20]"
+              [length]="totalRecords">
+            </mat-paginator>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

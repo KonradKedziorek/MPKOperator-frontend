@@ -15,21 +15,7 @@ import {
   TopCardComponent,
   SalesOverviewComponent,
   VisitorComponent,
-  Visitor2Component,
-  IncomeExpenssComponent,
-  PostsComponent,
-  NewsletterComponent,
-  DeveloperInfoComponent,
-  ActivityComponent,
-  TopCard2Component,
-  SalesPurchaseComponent,
-  SalesYearlyComponent,
-  ContactListComponent,
-  CommentsComponent,
-  MessageComponent,
 } from './dashboard-components';
-import { DashboardEmpComponent } from './dashboard-components/dashboard-emp/dashboard-emp.component';
-import { EmpDialogComponent } from './dashboard-components/dashboard-emp/emp-dialog/emp-dialog.component';
 import { AuthLoggedInGuard } from '../guards/auth/AuthLoggedInGuard';
 import {TableModule} from 'primeng/table';
 @NgModule({
@@ -50,20 +36,6 @@ import {TableModule} from 'primeng/table';
         TopCardComponent,
         SalesOverviewComponent,
         VisitorComponent,
-        Visitor2Component,
-        IncomeExpenssComponent,
-        PostsComponent,
-        NewsletterComponent,
-        DeveloperInfoComponent,
-        ActivityComponent,
-        TopCard2Component,
-        SalesPurchaseComponent,
-        SalesYearlyComponent,
-        ContactListComponent,
-        CommentsComponent,
-        MessageComponent,
-        DashboardEmpComponent,
-        EmpDialogComponent,
     ],
     providers:[AuthLoggedInGuard]
 })

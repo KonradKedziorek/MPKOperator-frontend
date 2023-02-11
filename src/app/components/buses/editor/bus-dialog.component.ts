@@ -29,7 +29,7 @@ export class BusDialogComponent implements OnInit {
             firstRegistrationDate: this.formatDate(data.firstRegistrationDate),
             brand: data.brand,
             model: data.model,
-            VIN: data.VIN,
+            vin: data.vin,
             maximumTotalMass: data.maximumTotalMass,
             deadWeightLoad: data.deadWeightLoad,
             engineSize: data.engineSize,
@@ -39,6 +39,7 @@ export class BusDialogComponent implements OnInit {
             serviceExpiryDate: this.formatDate(data.serviceExpiryDate),
           };
         }
+        console.log(this.bus)
     }
 
     ngOnInit(): void {
@@ -51,7 +52,7 @@ export class BusDialogComponent implements OnInit {
             firstRegistrationDate: new FormControl(this.bus.firstRegistrationDate),
             brand: new FormControl(this.bus.brand),
             model: new FormControl(this.bus.model),
-            VIN: new FormControl(this.bus.VIN),
+            vin: new FormControl(this.bus.vin),
             maximumTotalMass: new FormControl(this.bus.maximumTotalMass),
             deadWeightLoad: new FormControl(this.bus.deadWeightLoad),
             engineSize: new FormControl(this.bus.engineSize),

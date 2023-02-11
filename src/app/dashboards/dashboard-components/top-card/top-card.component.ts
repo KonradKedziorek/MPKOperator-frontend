@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MockTest } from 'src/app/models/mock/MockTest';
 
 @Component({
   selector: 'app-top-card',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./top-card.component.scss'],
 })
 export class TopCardComponent {
-  constructor() {}
+  @Input() mock: MockTest | undefined;
+  constructor() {
+    console.log(this.mock)
+  }
 }

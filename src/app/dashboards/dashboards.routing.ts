@@ -12,8 +12,8 @@ export const DashboardsRoutes: Routes = [
         component: Dashboard1Component,
         canActivate:[AuthLoggedInGuard],
         data: {
-          title: 'Dashboard 1',
-          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Dashboard 1' }],
+          title: 'Dashboard',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Dashboard' }],
         },
       },
     ],

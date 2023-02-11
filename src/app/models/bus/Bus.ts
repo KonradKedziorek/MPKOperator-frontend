@@ -7,7 +7,7 @@ export interface Bus {
     firstRegistrationDate: string;
     brand: string;
     model: string;
-    VIN: string;
+    vin: string;
     maximumTotalMass: string;
     deadWeightLoad: string;
     engineSize: string;

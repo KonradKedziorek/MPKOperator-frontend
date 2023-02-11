@@ -40,7 +40,7 @@ export class VisitorComponent {
 
   constructor() {
     this.VisitorChartOptions = {
-      series: [45, 15, 27, 18],
+      series: [21, 23, 25, 28],
       chart: {
         type: 'donut',
         fontFamily: 'Poppins,sans-serif',
@@ -65,7 +65,7 @@ export class VisitorComponent {
       legend: {
         show: false,
       },
-      labels: ['Mobile', 'Tablet', 'Desktop', 'Other'],
+      labels: ['Mechanics', 'Drivers', 'Dispatchers', 'Others'],
       colors: ['#1e88e5', '#26c6da', '#745af2', '#eceff1'],
       responsive: [
         {

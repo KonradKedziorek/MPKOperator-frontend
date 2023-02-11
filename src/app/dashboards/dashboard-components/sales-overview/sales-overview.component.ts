@@ -43,12 +43,12 @@ export class SalesOverviewComponent {
     this.chartOptions = {
       series: [
         {
-          name: 'Pixel',
-          data: [44, 55, 57, 56, 61, 58],
+          name: 'Avarage earnings',
+          data: [4453.10, 4586.65, 4355.61, 4423.86, 4787.99, 4564.23],
         },
         {
-          name: 'Ample',
-          data: [76, 85, 101, 98, 87, 105],
+          name: 'My earnings',
+          data: [4385.61, 4899.65, 5122.22, 5042.76, 4980.76, 4234.65],
         },
       ],
       chart: {
@@ -82,7 +82,7 @@ export class SalesOverviewComponent {
         show: false,
       },
       fill: {
-        colors: ['#26c6da', '#1e88e5'],
+        colors: ['#1e88e5', '#26c6da'],
         opacity: 1,
       },
       tooltip: {

@@ -39,6 +39,16 @@ export const AppRoutes: Routes = [
         loadChildren: () =>
           import('./components/buses/buses.module').then((m) => m.BusesModule),
       },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('./components/users/users.module').then((m) => m.UsersModule),
+      },
+      {
+        path: 'schedules',
+        loadChildren: () =>
+          import('./components/schedules/schedules.module').then((m) => m.SchedulesModule),
+      },
     ],
   },
   {

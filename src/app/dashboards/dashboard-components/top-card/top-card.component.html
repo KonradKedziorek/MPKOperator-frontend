@@ -1,4 +1,4 @@
-<div fxLayout="row wrap">
+<div *ngIf="this.mock != undefined" fxLayout="row wrap">
   <!-- column -->
   <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
     <mat-card>
@@ -8,13 +8,13 @@
           <!-- column -->
           <div class="m-r-10 no-shrink">
             <button mat-fab mat-card-icon class="shadow-none bg-inverse bg-success">
-              <mat-icon>account_circle</mat-icon>
+              <mat-icon>work</mat-icon>
             </button>
           </div>
           <!-- column -->
           <div>
-            <h3 class="m-0">386</h3>
-            <h6 class="text-muted m-0">New Clients</h6>
+            <h3 class="m-0">{{ this.mock.workedDayInYear }}</h3>
+            <h6 class="text-muted m-0">Worked Days</h6>
           </div>
         </div>
       </mat-card-content>
@@ -30,13 +30,13 @@
           <!-- column -->
           <div class="m-r-10 no-shrink">
             <button mat-fab color="warn" mat-card-icon class="shadow-none bg-warning">
-              <mat-icon>local_mall</mat-icon>
+              <mat-icon>tag_faces</mat-icon>
             </button>
           </div>
           <!-- column -->
           <div>
-            <h3 class="m-0">2408</h3>
-            <h6 class="text-muted m-0">All Projects</h6>
+            <h3 class="m-0">{{ this.mock.freeDays }}</h3>
+            <h6 class="text-muted m-0">Free days</h6>
           </div>
         </div>
       </mat-card-content>
@@ -52,13 +52,13 @@
           <!-- column -->
           <div class="m-r-10 no-shrink">
             <button mat-fab color="accent" mat-card-icon class="shadow-none">
-              <mat-icon>stars</mat-icon>
+              <mat-icon>wb_sunny</mat-icon>
             </button>
           </div>
           <!-- column -->
           <div>
-            <h3 class="m-0">352</h3>
-            <h6 class="text-muted m-0">New Items</h6>
+            <h3 class="m-0">{{ this.mock.daysOfLeaveToUse }}</h3>
+            <h6 class="text-muted m-0">Days of leave to use</h6>
           </div>
         </div>
       </mat-card-content>
@@ -74,13 +74,13 @@
           <!-- column -->
           <div class="m-r-10 no-shrink">
             <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger">
-              <mat-icon>content_paste</mat-icon>
+              <mat-icon>attach_money</mat-icon>
             </button>
           </div>
           <!-- column -->
           <div>
-            <h3 class="m-0">159</h3>
-            <h6 class="text-muted m-0">New Invoices</h6>
+            <h3 class="m-0">{{ this.mock.actual_payment }}</h3>
+            <h6 class="text-muted m-0">Actual salary rate</h6>
           </div>
         </div>
       </mat-card-content>

@@ -34,6 +34,7 @@ export class FaultsComponent implements OnInit {
     filters = new FormGroup({
         date: new FormControl(null),
         placeOfEvent: new FormControl(null),
+        createdBy: new FormControl(null),
         faultStatus: new FormControl(null),
         busNumber: new FormControl(null),
     });
