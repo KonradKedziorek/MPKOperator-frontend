@@ -5,7 +5,6 @@ import { MenuItems } from '../../shared/menu-items/menu-items';
 
 import { PerfectScrollbarConfigInterface, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 
-/** @title Responsive sidenav */
 @Component({
   selector: 'app-full-layout',
   templateUrl: 'full.component.html',
@@ -20,7 +19,7 @@ export class FullComponent implements OnDestroy {
   boxed = false;
   horizontal = false;
 
-  green = false;
+  green = true;
   blue = false;
   danger = false;
   showHide = false;

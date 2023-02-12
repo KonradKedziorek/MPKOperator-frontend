@@ -12,8 +12,6 @@ import {
   ApexFill,
   ApexTooltip,
   ApexGrid,
-  ApexNonAxisChartSeries,
-  ApexResponsive,
 } from 'ng-apexcharts';
 
 export interface ChartOptions {

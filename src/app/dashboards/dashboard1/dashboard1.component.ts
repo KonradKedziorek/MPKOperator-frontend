@@ -12,16 +12,12 @@ import { ScheduleService } from 'src/app/services/schedule/schedule.service';
 export class Dashboard1Component implements OnInit{
   constructor(
     private mockService: MockService,
-    private scheduleService: ScheduleService,
-    private sanitizer: DomSanitizer,
 ) {}
   ngOnInit(): void {
     this.getStats();
-    this.openFile();
   }
 
   declare mock: MockTest;
-  declare image: any;
 
   public getStats() {
     this.mockService.getStats().subscribe(
@@ -32,19 +28,5 @@ export class Dashboard1Component implements OnInit{
             console.log(error);
         },
     );
-}
-
-public openFile() {
-  this.scheduleService.getFileByPath().subscribe(
-    (value: any) => {
-        var file = new Blob([value], { type: 'image/jpeg' });
-        var fileURL = URL.createObjectURL(file);
-        this.image = this.sanitizer.bypassSecurityTrustUrl(fileURL);
-    },
-    (error) => {
-      console.log(error);
-      var errorMessage = error.error.details;
-    }
-  );
 }
 }

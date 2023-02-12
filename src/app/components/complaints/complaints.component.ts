@@ -7,6 +7,7 @@ import { Complaint } from 'src/app/models/complaint/Complaint';
 import { ComplaintCreatorDialog } from './creator/complaint-creator-dialog.component';
 import { ComplaintDialogComponent } from './editor/complaint-dialog.component';
 import { ComplaintDetailsDialog } from './details/complaint-details-dialog.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'complaints',

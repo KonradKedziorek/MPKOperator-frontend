@@ -2,11 +2,20 @@
     <mat-card-content>
       <div class="d-flex align-items-center">
         <div class="ml-auto">
-          <button mat-raised-button color="primary">Upload schedule</button>
+          <button mat-raised-button color="primary">Upload new schedule</button>
         </div>
       </div>
     </mat-card-content>
   </mat-card>
+
+  <div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+          <mat-card-title>Newest schedule</mat-card-title>
+            <img [src]="this.image" width="1325" height="800">
+          </div>
+    </div>
+
+
   <!-- <form class="basic-form" [formGroup]="filters" autocomplete="off">
     <div fxLayout="row wrap" fxFlexAlign="center" class="row">
       <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">

@@ -11,11 +11,11 @@
     <div class="w-100 fix-width-for-horizontal">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
-          <b>
+          <!-- <b>
             <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
             <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-          </b>
-          <span fxShow="false" fxShow.gt-xs>
+          </b> -->
+          <span fxShow="true" fxShow.gt-xs>
             MPKOperator
           </span>
         </a>
@@ -32,9 +32,9 @@
       <ng-template #horizontalheader>
         <app-horizontal-header></app-horizontal-header>
       </ng-template>
-      <button (click)="end.toggle()" mat-icon-button class="ml-xs overflow-visible">
+      <!-- <button (click)="end.toggle()" mat-icon-button class="ml-xs overflow-visible">
         <mat-icon>settings</mat-icon>
-      </button>
+      </button> -->
     </div>
   </mat-toolbar>
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0"

@@ -33,7 +33,7 @@ export interface Menu {
 const MENUITEMS = [
   {
     state: 'dashboard',
-    name: 'Dashboard 1',
+    name: 'Dashboard',
     type: 'link',
     icon: 'av_timer',
   },
@@ -63,7 +63,7 @@ const MENUITEMS = [
   },
   {
     state: 'schedules',
-    name: 'Schedules',
+    name: 'Dispatcher schedule',
     type: 'link',
     icon: 'schedule',
   },
