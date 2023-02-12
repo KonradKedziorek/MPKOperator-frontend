@@ -1,6 +1,6 @@
 import { DatePipe } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { Component, Inject, OnInit } from "@angular/core";
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ScheduleResponse } from "src/app/models/schedule/ScheduleResponse";
 import { ScheduleService } from "src/app/services/schedule/schedule.service";
@@ -19,7 +19,6 @@ export class ScheduleComponent implements OnInit {
     ) {}
     ngOnInit(): void {
         this.getSchedules("DISPATCHER_SCHEDULE");
-        this.openFile();
     }
 
     displayedColumns = [
@@ -37,7 +36,11 @@ export class ScheduleComponent implements OnInit {
         this.scheduleService.getSchedules(params).subscribe(
             (value) => {
                 this.schedules = value;
-                console.log(this.schedules)
+                // console.log(this.schedules)
+                if (this.schedules != undefined) {
+                    const uuid = this.schedules[0].uuid
+                    this.openFile(uuid)
+                }
             },
             (error) => {
                 console.log(error);
@@ -59,8 +62,9 @@ export class ScheduleComponent implements OnInit {
         return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm:ss');
     }
 
-    public openFile() {
-        this.scheduleService.getFileByPath().subscribe(
+    public openFile(uuid: String) {
+        console.log(uuid)
+        this.scheduleService.getFileByPath(uuid).subscribe(
           (value: any) => {
               var file = new Blob([value], { type: 'image/jpeg' });
               var fileURL = URL.createObjectURL(file);
@@ -89,20 +93,6 @@ export class ScheduleComponent implements OnInit {
     //     let dialogRef = this.dialog.open(FaultCreatorDialog, dialogConfig);
     //     dialogRef.afterClosed().subscribe(() => {
     //         this.getFaults(this.params, this.page, this.size);
-    //     });
-    // }
-
-    // public getFault(uuid: String) {
-    //     let dialogRef = this.dialog.open(FaultDetailsDialog, {
-    //       maxWidth: '100vw',
-    //       maxHeight: '100vh',
-    //       height: '100%',
-    //       width: '100%',
-    //       panelClass: 'full-screen-modal',
-    //       data: uuid,
-    //     });
-    //     dialogRef.afterClosed().subscribe(() => {
-    //       this.getFaults(this.params, this.page, this.size);
     //     });
     // }
 }
