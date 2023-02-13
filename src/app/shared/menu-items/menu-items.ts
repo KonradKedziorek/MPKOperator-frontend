@@ -62,8 +62,20 @@ const MENUITEMS = [
     icon: 'person',
   },
   {
-    state: 'schedules',
+    state: 'dispatcherSchedules',
     name: 'Dispatcher schedule',
+    type: 'link',
+    icon: 'schedule',
+  },
+  {
+    state: 'driverSchedules',
+    name: 'Driver schedule',
+    type: 'link',
+    icon: 'schedule',
+  },
+  {
+    state: 'mechanicSchedules',
+    name: 'Mechanic schedule',
     type: 'link',
     icon: 'schedule',
   },

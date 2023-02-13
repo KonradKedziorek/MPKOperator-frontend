@@ -1,9 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { MockTest } from "src/app/models/mock/MockTest";
 import { ScheduleResponse } from "src/app/models/schedule/ScheduleResponse";
-import { UserWrapper } from "src/app/models/user/UserWrapper";
 
 @Injectable({
     providedIn: 'root',

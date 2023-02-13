@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { MockTest } from 'src/app/models/mock/MockTest';
 import { MockService } from 'src/app/services/mock/mock.service';
-import { ScheduleService } from 'src/app/services/schedule/schedule.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -45,9 +45,19 @@ export const AppRoutes: Routes = [
           import('./components/users/users.module').then((m) => m.UsersModule),
       },
       {
-        path: 'schedules',
+        path: 'dispatcherSchedules',
         loadChildren: () =>
-          import('./components/schedules/schedules.module').then((m) => m.SchedulesModule),
+          import('./components/dispatcherSchedules/dispatcherSchedules.module').then((m) => m.DispatcherSchedulesModule),
+      },
+      {
+        path: 'driverSchedules',
+        loadChildren: () =>
+          import('./components/driverSchedules/driverSchedules.module').then((m) => m.DriverSchedulesModule),
+      },
+      {
+        path: 'mechanicSchedules',
+        loadChildren: () =>
+          import('./components/mechanicSchedules/mechanicSchedules.module').then((m) => m.MechanicSchedulesModule),
       },
     ],
   },
