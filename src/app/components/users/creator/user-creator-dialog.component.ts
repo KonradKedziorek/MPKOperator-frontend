@@ -41,6 +41,13 @@ export class UserCreatorDialog implements OnInit {
     declare creatorUser: any;
     declare errors: MethodArgumentNotValidFieldMessage[];
     declare errorMessage: string;
+    isActiveOptions: string[] = ['true', 'false'];
+    ADMIN = "ADMIN"
+    DISPATCHER = "DISPATCHER"
+    DRIVER = "ADMIN"
+    USER = "USER"
+    EXAMPLE = "EXAMPLE"
+    TEST = "TEST"
 
     public closeForm() {
         this.dialog.closeAll();
@@ -71,6 +78,7 @@ export class UserCreatorDialog implements OnInit {
             this.dialog.closeAll();
         })
         .catch((e) => {
+            console.log(creatingUserRequest)
             this.errors = e.error.errors;
             this.errorMessage = e.error.message;
         });
