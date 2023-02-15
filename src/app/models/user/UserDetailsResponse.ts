@@ -12,7 +12,7 @@ export interface UserDetailsResponse {
     createdBy: string;
     modifiedAt: string;
     modifiedBy: string;
-    roles: Set<Role>
+    roles: Array<Role>
     city: string;
     postcode: string;
     street: string;

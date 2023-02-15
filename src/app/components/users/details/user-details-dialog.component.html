@@ -1,0 +1,73 @@
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close matSuffix mat-icon-button aria-label="Clear">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-dialog-actions>
+
+  <mat-dialog-actions align="center">
+    <h2 class="m-t-0 m-b-10 font-medium">USER DETAILS</h2>
+  </mat-dialog-actions>
+  
+  <div fxLayout="row wrap" *ngIf="user!=undefined">
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+              <h5 class="p-t-20 m-b-5">Name</h5>
+              <span>{{user.name}}</span>
+              <h5 class="p-t-20 m-b-5">Surname</h5>
+              <span>{{user.surname}}</span>
+              <h5 class="p-t-20 m-b-5">Username</h5>
+              <span>{{user.username}}</span>
+              <h5 class="p-t-20 m-b-5">Email</h5>
+              <span>{{user.email}}</span>
+              <h5 class="p-t-20 m-b-5">PhoneNumber</h5>
+              <span>{{user.phoneNumber}}</span>
+              <h5 class="p-t-20 m-b-5">Pesel</h5>
+              <span>{{user.pesel}}</span>
+              <br />
+            </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-content>
+              <h5 class="p-t-20 m-b-5">City</h5>
+              <span>{{user.city}}</span>
+              <h5 class="p-t-20 m-b-5">Postcode</h5>
+              <span>{{user.postcode}}</span>
+              <h5 class="p-t-20 m-b-5">Street</h5>
+              <span>{{user.street}}</span>
+              <h5 class="p-t-20 m-b-5">Local number</h5>
+              <span>{{user.localNumber}}</span>
+              <h5 class="p-t-20 m-b-5">House number</h5>
+              <span>{{user.houseNumber}}</span>
+              <br />
+            </mat-card-content>
+          </mat-card>
+    </div>
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+      <mat-card>
+        <mat-card-content>
+            <h5 class="p-t-20 m-b-5">Is user active</h5>
+          <span class="label"
+            [ngClass]="['label-isActive-' + user.isActive]">{{user.isActive}}</span>
+          <h5 class="p-t-20 m-b-5">Created at</h5>
+          <span>{{this.formatDate(user.createdAt)}}</span>
+          <h5 class="p-t-20 m-b-5">Created by</h5>
+          <span>{{user.createdBy}}</span>
+          <h5 class="p-t-20 m-b-5">Last modified at</h5>
+          <span>{{this.formatDate(user.modifiedAt)}}</span>
+          <h5 class="p-t-20 m-b-5">Last modified by</h5>
+          <span>{{user.modifiedBy}}</span>
+          <br />
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>Roles</mat-card-title>
+          <ul class="list-unstyled m-t-10" *ngFor="let role of roles">
+            <h5>{{role.name}}</h5>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

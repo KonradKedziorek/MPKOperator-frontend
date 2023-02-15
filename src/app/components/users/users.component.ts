@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { User } from "src/app/models/user/User";
 import { UserService } from "src/app/services/user/user.service";
 import { UserCreatorDialog } from "./creator/user-creator-dialog.component";
+import { UserDetailsDialog } from "./details/user-details-dialog.component";
 
 @Component({
     selector: 'Users',
@@ -103,19 +104,19 @@ export class UsersComponent implements OnInit {
         });
     }
 
-    // public getUser(uuid: String) {
-    //     let dialogRef = this.dialog.open(UserDetailsDialog, {
-    //       maxWidth: '100vw',
-    //       maxHeight: '100vh',
-    //       height: '100%',
-    //       width: '100%',
-    //       panelClass: 'full-screen-modal',
-    //       data: uuid,
-    //     });
-    //     dialogRef.afterClosed().subscribe(() => {
-    //       this.getUsers(this.params, this.page, this.size);
-    //     });
-    // }
+    public getUser(uuid: String) {
+        let dialogRef = this.dialog.open(UserDetailsDialog, {
+          maxWidth: '100vw',
+          maxHeight: '100vh',
+          height: '100%',
+          width: '100%',
+          panelClass: 'full-screen-modal',
+          data: uuid,
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.getUsers(this.params, this.page, this.size);
+        });
+    }
 
     public onSearchChange(): void {
         this.filterOnClick();

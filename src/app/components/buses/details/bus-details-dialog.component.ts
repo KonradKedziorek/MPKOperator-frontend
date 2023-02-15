@@ -32,7 +32,7 @@ export class BusDetailsDialog implements OnInit {
         });
     }
     
-    declare userForm: any;
+  declare userForm: any;
   declare uuid: String;
 
   declare bus: BusDetailsResponse;
@@ -58,24 +58,6 @@ export class BusDetailsDialog implements OnInit {
   public formatDate(date: any) {
     return this.datePipe.transform(date, 'yyyy-MM-dd');
   }
-
-//   public async reply() {
-//     let commentRequest: CommentRequest = {
-//       content: this.commentForm.value.content,
-//     };
-//     await this.faultService
-//       .addComment(commentRequest, this.fault.uuid)
-//       .toPromise()
-//       .then((value) => {
-//         this.comments = value?.commentResponseList;
-//         this.commentForm.setValue({
-//           content: null,
-//         });
-//       })
-//       .catch((e) => {
-//         console.log(e);
-//       });
-//   }
 
   public async changeStatus(uuid: String, status: String) {
     this.busService.changeStatus(uuid, status).subscribe(

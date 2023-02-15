@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { DemoMaterialModule } from "src/app/demo-material-module";
 import { UserCreatorDialog } from "./creator/user-creator-dialog.component";
+import { UserDetailsDialog } from "./details/user-details-dialog.component";
 import { UsersComponent } from "./users.component";
 import { UsersRoutes } from "./users.routing";
 
@@ -22,6 +23,7 @@ import { UsersRoutes } from "./users.routing";
     declarations: [
         UsersComponent,
         UserCreatorDialog,
+        UserDetailsDialog
     ],
   })
   export class UsersModule {}

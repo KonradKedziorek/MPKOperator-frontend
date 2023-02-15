@@ -54,6 +54,8 @@
     "ng2-file-upload": "^1.4.0",
     "ng2-search-filter": "^0.5.1",
     "ngx-custom-validators": "8.0.0",
+    "ngx-image-viewer": "^1.0.13",
+    "ngx-image-viewer-updated": "^1.0.18",
     "ngx-material-timepicker": "^5.5.3",
     "ngx-pagination": "^6.0.1",
     "ngx-perfect-scrollbar": "^10.1.1",
