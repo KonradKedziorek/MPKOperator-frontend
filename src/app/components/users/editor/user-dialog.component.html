@@ -1,0 +1,180 @@
+<mat-dialog-content>
+    <div fxLayout="row wrap">
+        <div fxFlex.gt-sm="100" fxFlex="100">
+          <mat-card>
+            <mat-card-content>
+              <mat-card-title>Edit user</mat-card-title>
+              <form class="basic-form" [formGroup]="editUser" autocomplete="off">
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-md="100" fxFlex="100">
+                        <mat-form-field>
+                          <input formControlName="name" matInput placeholder="Name" />
+                        </mat-form-field>
+                        <ul class="list-unstyled" *ngFor="let error of getErrorMessages('name')">
+                          <li>
+                            <mat-error>{{error}}</mat-error>
+                          </li>
+                        </ul>
+                      </div>
+                      <div fxFlex.gt-md="100" fxFlex="100">
+                        <mat-form-field>
+                          <input formControlName="surname" matInput placeholder="Surname" />
+                        </mat-form-field>
+                        <ul class="list-unstyled" *ngFor="let error of getErrorMessages('surname')">
+                          <li>
+                            <mat-error>{{error}}</mat-error>
+                          </li>
+                        </ul>
+                      </div>
+                      <div fxFlex.gt-md="100" fxFlex="100">
+                        <mat-form-field>
+                          <input formControlName="username" matInput placeholder="Username" />
+                        </mat-form-field>
+                        <ul class="list-unstyled" *ngFor="let error of getErrorMessages('username')">
+                          <li>
+                            <mat-error>{{error}}</mat-error>
+                          </li>
+                        </ul>
+                      </div>
+                      <div fxFlex.gt-sm="100" fxFlex="100">
+                        <mat-form-field>
+                          <input formControlName="email" matInput placeholder="Email" />
+                        </mat-form-field>
+                        <ul class="list-unstyled" *ngFor="let error of getErrorMessages('email')">
+                          <li>
+                            <mat-error>{{error}}</mat-error>
+                          </li>
+                        </ul>
+                      </div>
+                      <div fxFlex.gt-sm="100" fxFlex="100">
+                        <mat-form-field>
+                          <input formControlName="password" matInput placeholder="Password" />
+                        </mat-form-field>
+                        <ul class="list-unstyled" *ngFor="let error of getErrorMessages('password')">
+                          <li>
+                            <mat-error>{{error}}</mat-error>
+                          </li>
+                        </ul>
+                      </div>
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                          <mat-form-field>
+                            <input formControlName="pesel" matInput placeholder="Pesel" />
+                          </mat-form-field>
+                          <ul class="list-unstyled" *ngFor="let error of getErrorMessages('pesel')">
+                            <li>
+                              <mat-error>{{error}}</mat-error>
+                            </li>
+                          </ul>
+                        </div>
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                          <mat-form-field>
+                            <input formControlName="phoneNumber" matInput placeholder="Phone number" />
+                          </mat-form-field>
+                          <ul class="list-unstyled" *ngFor="let error of getErrorMessages('phoneNumber')">
+                            <li>
+                              <mat-error>{{error}}</mat-error>
+                            </li>
+                          </ul>
+                        </div>
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                          <mat-form-field>
+                            <input formControlName="city" matInput placeholder="City" />
+                          </mat-form-field>
+                          <ul class="list-unstyled" *ngFor="let error of getErrorMessages('city')">
+                            <li>
+                              <mat-error>{{error}}</mat-error>
+                            </li>
+                          </ul>
+                        </div>
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                          <mat-form-field>
+                            <input formControlName="postcode" matInput placeholder="Postcode" />
+                          </mat-form-field>
+                          <ul class="list-unstyled" *ngFor="let error of getErrorMessages('postcode')">
+                            <li>
+                              <mat-error>{{error}}</mat-error>
+                            </li>
+                          </ul>
+                        </div>
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                          <mat-form-field>
+                            <input formControlName="street" matInput placeholder="Street" />
+                          </mat-form-field>
+                          <ul class="list-unstyled" *ngFor="let error of getErrorMessages('street')">
+                            <li>
+                              <mat-error>{{error}}</mat-error>
+                            </li>
+                          </ul>
+                        </div>
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                          <mat-form-field>
+                            <input formControlName="localNumber" matInput placeholder="Local number" />
+                          </mat-form-field>
+                          <ul class="list-unstyled" *ngFor="let error of getErrorMessages('localNumber')">
+                            <li>
+                              <mat-error>{{error}}</mat-error>
+                            </li>
+                          </ul>
+                        </div>
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                          <mat-form-field>
+                            <input formControlName="houseNumber" matInput placeholder="House number" />
+                          </mat-form-field>
+                          <ul class="list-unstyled" *ngFor="let error of getErrorMessages('houseNumber')">
+                            <li>
+                              <mat-error>{{error}}</mat-error>
+                            </li>
+                          </ul>
+                        </div>
+                        <div fxFlex.gt-sm="100" fxFlex="100">
+                          <mat-form-field>
+                            <input formControlName="busNumber" matInput placeholder="Bus number" />
+                          </mat-form-field>
+                          <ul class="list-unstyled" *ngFor="let error of getErrorMessages('busNumber')">
+                            <li>
+                              <mat-error>{{error}}</mat-error>
+                            </li>
+                          </ul>
+                        </div>
+                      <div fxFlex.gt-sm="100" fxFlex="100">
+                        <mat-radio-group class="radio-group">
+                            <b>IsActive</b>
+                            <mat-radio-button formControlName="isActive" class="radio-button" *ngFor="let isActiveOption of isActiveOptions"
+                            [(ngModel)]="isActive" [value]="isActiveOption"> {{ isActiveOption }}
+                            </mat-radio-button>
+                          <ul class="list-unstyled" *ngFor="let error of getErrorMessages('isActive')">
+                            <li>
+                              <mat-error>{{error}}</mat-error>
+                            </li>
+                          </ul>
+                          </mat-radio-group>
+                      </div>
+                      <div fxFlex.gt-sm="100" fxFlex="100">
+                          <mat-form-field class="example-form-field">
+                            <mat-label>Service expiry date</mat-label>
+                            <input matInput [matDatepicker]="datepicker3" formControlName="serviceExpiryDate">
+                            <mat-datepicker-toggle matSuffix [for]="datepicker3"></mat-datepicker-toggle>
+                            <mat-datepicker #datepicker3>
+                              <mat-datepicker-actions>
+                                <button mat-button matDatepickerCancel>Odrzuć</button>
+                                <button mat-raised-button color="primary" matDatepickerApply>Zastosuj</button>
+                              </mat-datepicker-actions>
+                            </mat-datepicker>
+                          </mat-form-field>
+                          <ul class="list-unstyled" *ngFor="let error of getErrorMessages('serviceExpiryDate')">
+                            <li>
+                              <mat-error>{{error}}</mat-error>
+                            </li>
+                          </ul>
+                        </div>
+                  <div fxFlex.gt-sm="100" fxFlex="100">
+                    <button mat-raised-button color="primary" (click)="edit()">Edit</button>
+                  </div>
+                  <mat-error *ngIf="errorMessage!=undefined">{{this.errorMessage}}</mat-error>
+                </div>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-dialog-content>

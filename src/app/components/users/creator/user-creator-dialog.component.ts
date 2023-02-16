@@ -3,9 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { MethodArgumentNotValidFieldMessage } from "src/app/models/errors/MethodArgumentNotValidFieldMessage";
-import { FaultRequest } from "src/app/models/fault/FaultRequest";
 import { UserRequest } from "src/app/models/user/UserRequest";
-import { FaultService } from "src/app/services/fault/fault.service";
 import { UserService } from "src/app/services/user/user.service";
 
 @Component({

@@ -1,0 +1,40 @@
+<mat-dialog-content>
+    <div fxLayout="row wrap">
+      <div fxFlex.gt-sm="100" fxFlex="100">
+        <mat-card>
+          <mat-card-content>
+            <mat-card-title>Create e-mail to user</mat-card-title>
+            <form class="basic-form" [formGroup]="mailSender" autocomplete="off">
+              <div fxLayout="row wrap">
+                <div fxFlex.gt-md="100" fxFlex="100">
+                  <mat-form-field>
+                    <input formControlName="subject" matInput placeholder="Subject" />
+                  </mat-form-field>
+                  <ul class="list-unstyled" *ngFor="let error of getErrorMessages('subject')">
+                    <li>
+                      <mat-error>{{error}}</mat-error>
+                    </li>
+                  </ul>
+                </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                    <mat-form-field>
+                      <textarea matInput formControlName="content" placeholder="Content" rows="14"></textarea>
+                    </mat-form-field>
+                    <ul class="list-unstyled" *ngFor="let error of getErrorMessages('content')">
+                      <li>
+                        <mat-error>{{error}}</mat-error>
+                      </li>
+                    </ul>
+                  </div>
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                  <button mat-raised-button color="primary" (click)="createMail()">Send</button>
+                </div>
+                <mat-error *ngIf="errorMessage!=undefined">{{this.errorMessage}}</mat-error>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-dialog-content>
+  

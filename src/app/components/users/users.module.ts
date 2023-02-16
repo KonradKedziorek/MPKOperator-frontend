@@ -7,6 +7,8 @@ import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { DemoMaterialModule } from "src/app/demo-material-module";
 import { UserCreatorDialog } from "./creator/user-creator-dialog.component";
 import { UserDetailsDialog } from "./details/user-details-dialog.component";
+import { UserDialogComponent } from "./editor/user-dialog.component";
+import { UserMailSenderDialog } from "./mailSender/user-mailSender-dialog.component";
 import { UsersComponent } from "./users.component";
 import { UsersRoutes } from "./users.routing";
 
@@ -23,7 +25,9 @@ import { UsersRoutes } from "./users.routing";
     declarations: [
         UsersComponent,
         UserCreatorDialog,
-        UserDetailsDialog
+        UserDetailsDialog,
+        UserDialogComponent,
+        UserMailSenderDialog
     ],
   })
   export class UsersModule {}

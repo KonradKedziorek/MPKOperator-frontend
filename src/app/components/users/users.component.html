@@ -102,7 +102,7 @@
                       <mat-icon>details</mat-icon>
                       <span>Details</span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="createMail(element.uuid)">
                       <mat-icon>contact_mail</mat-icon>
                       <span>Send Mail</span>
                     </button>
