@@ -117,10 +117,13 @@
                     </ul>
                   </div>
                   <div fxFlex.gt-sm="100" fxFlex="100">
-                    <mat-radio-group class="radio-group">
+                    <mat-radio-group class="radio-group" formControlName="isActive">
                       <b>IsActive</b>
-                      <mat-radio-button formControlName="isActive" class="radio-button" *ngFor="let isActiveOption of isActiveOptions"
-                      [(ngModel)]="isActive" [value]="isActiveOption"> {{ isActiveOption }}
+                      <mat-radio-button class="radio-button"
+                      [value]="true"> Enabled
+                      </mat-radio-button>
+                      <mat-radio-button class="radio-button"
+                      [value]="false"> Disabled
                       </mat-radio-button>
                     <ul class="list-unstyled" *ngFor="let error of getErrorMessages('isActive')">
                       <li>
@@ -130,7 +133,16 @@
                     </mat-radio-group>
                   </div>
                 <div fxFlex.gt-sm="100" fxFlex="100">
-                  <section class="example-section" formControlName="roles">
+
+                  <mat-form-field>
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="roles" multiple>
+                      <mat-option *ngFor="let role of roles" [value]="role.value"> {{role.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!-- <section class="example-section" formControlName="roles">
                     <b>Roles</b>
                     <mat-checkbox class="example-margin" value="ADMIN">ADMIN</mat-checkbox>
                     <mat-checkbox class="example-margin" value="USER">USER</mat-checkbox>
@@ -139,7 +151,7 @@
                     <li>
                       <mat-error>{{error}}</mat-error>
                     </li>
-                  </ul>
+                  </ul> -->
                 </div>
                 <div fxFlex.gt-sm="100" fxFlex="100">
                   <button mat-raised-button color="primary" (click)="createUser()">Add</button>

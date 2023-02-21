@@ -52,6 +52,7 @@ export class UsersComponent implements OnInit {
     public getUsers(params: any, page: number, size: number) {
         this.userService.getUsers(params, page, size).subscribe(
             (value) => {
+                console.log(value.data);
                 this.users = value.data;
                 this.totalRecords = value.size;
             },

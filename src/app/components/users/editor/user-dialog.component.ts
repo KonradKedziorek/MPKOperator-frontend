@@ -20,6 +20,7 @@ export class UserDialogComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) data: User,
     ) {
         if (data !== null) {
+            console.log(data)
           this.user = {
             uuid: data.uuid,
             name: data.name,

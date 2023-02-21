@@ -16,7 +16,13 @@ export class UserCreatorDialog implements OnInit {
         private userService: UserService,
         private dialog: MatDialog,
         private datePipe: DatePipe,
-    ) {}
+    ) {
+        this.roles= [
+            { name: 'ADMIN', value: "ADMIN"},
+            { name: 'DRIVER', value: 'DRIVER' }
+          ];
+        console.log(this.roles)
+    }
 
     ngOnInit(): void {
         this.creatorUser = new FormGroup({
@@ -31,7 +37,7 @@ export class UserCreatorDialog implements OnInit {
             localNumber: new FormControl(null),
             houseNumber: new FormControl(null),
             isActive: new FormControl(null),
-            busNumber: new FormControl(null),
+            busNumber: new FormControl(""),
             roles: new FormControl(null),
         });
     }
@@ -39,19 +45,19 @@ export class UserCreatorDialog implements OnInit {
     declare creatorUser: any;
     declare errors: MethodArgumentNotValidFieldMessage[];
     declare errorMessage: string;
-    isActiveOptions: string[] = ['true', 'false'];
-    ADMIN = "ADMIN"
-    DISPATCHER = "DISPATCHER"
-    DRIVER = "ADMIN"
-    USER = "USER"
-    EXAMPLE = "EXAMPLE"
-    TEST = "TEST"
+    // declare roles: Set<String>(["ADMIN", "DISPATCHER", "DRIVER", "MECHANIC", "MANAGER", "DIRECTOR"]);
+
+    declare roles: any[];
+    // declare roles: Set<String>;
+
+    // roles: Array<String> = new Array<String>(["east", "west"]);
 
     public closeForm() {
         this.dialog.closeAll();
     }
 
     public async createUser() {
+        console.log("Role: " + this.roles)
         let creatingUserRequest: UserRequest = {
             name: this.creatorUser.value.name,
             surname: this.creatorUser.value.surname,
